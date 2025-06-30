@@ -1,22 +1,14 @@
 #!/bin/bash
 
-for blah in $(find .config/)
+for config_file in $(ls .config/)
 do
-	if [[ "${blah}" == ".config/" ]]
-	then
-		continue;
-	elif [[ -d ${blah} ]]
-	then
-		echo "rm -rf ~/${blah}"
+	echo config_file=${config_file}
 
-		rm -rf ~/${blah}
+	echo "rm -rf ~/.config/${config_file}"
 
-		echo "mkdir -p ~/${blah}"
+	rm -rf ~/.config/${config_file}
 
-		mkdir -p ~/${blah}
-	else
-		echo "cp ${blah} ~/${blah}"
+	echo "ln -s $(pwd)/.config/${config_file} ~/.config/${config_file}"
 
-		cp ${blah} ~/${blah}
-	fi
+	ln -s $(pwd)/.config/${config_file} ~/.config/${config_file}
 done
