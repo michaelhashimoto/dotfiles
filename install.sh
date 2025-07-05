@@ -1,8 +1,12 @@
 #!/bin/bash
 
-echo "cp -f .dotfiles.zshrc ~/.dotfiles.zshrc"
+echo "rm -fr ~/.dotfiles.zshrc"
 
-cp -f .dotfiles.zshrc ~/.dotfiles.zshrc
+rm -fr ~/.dotfiles.zshrc
+
+echo "ln -s $(pwd)/.dotfiles.zshrc ~/.dotfiles.zshrc"
+
+ln -s $(pwd)/.dotfiles.zshrc ~/.dotfiles.zshrc
 
 grep -qxF 'source ~/.dotfiles.zshrc' ~/.zshrc || echo 'source ~/.dotfiles.zshrc' >> ~/.zshrc
 
