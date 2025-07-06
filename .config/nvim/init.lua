@@ -42,7 +42,7 @@ require("lazy").setup(plugins, opts)
 
 require("catppuccin").setup()
 
-vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme("catppuccin")
 
 local builtin = require("telescope.builtin")
 
