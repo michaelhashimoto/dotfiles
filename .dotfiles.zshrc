@@ -11,7 +11,12 @@ eval "$(starship init zsh)"
 
 # Configure kubectl autocomplete
 
-if type kubectl &>/dev/null; then
+if type kubectl &>/dev/null
+then
+	autoload -Uz compinit
+
+	compinit
+
 	source <(kubectl completion zsh)
 fi
 
