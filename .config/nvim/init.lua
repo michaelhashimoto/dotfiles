@@ -31,12 +31,21 @@ vim.opt.rtp:prepend(lazypath)
 local opts = {}
 local plugins = {
 	{ "catppuccin/nvim", name = "catppuccin" },
-	{ "nvim-telescope/telescope.nvim",
+	{
+		"nvim-telescope/telescope.nvim",
 		dependencies = {
 			"nvim-lua/plenary.nvim"
 		}
 	},
 	{ "nvim-treesitter/nvim-treesitter", build= ":TSUpdate" },
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"MunifTanjim/nui.nvim",
+		},
+	},
 }
 
 require("lazy").setup(plugins, opts)
@@ -63,3 +72,16 @@ vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
+
+vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<cr>")
+
+require("neo-tree").setup({
+	filesystem = {
+		filtered_items = {
+			visible = true,
+			hide_dotfiles = false,
+			hide_gitignored = false,
+			hide_hidden = false,
+		}
+	}
+});
