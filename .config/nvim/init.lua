@@ -62,6 +62,9 @@ local plugins = {
 					virt_text = true,
 				},
 			})
+
+			vim.keymap.set("n", "<C-D-n>", ":Gitsigns nav_hunk next<cr>")
+			vim.keymap.set("n", "<C-D-p>", ":Gitsigns nav_hunk prev<cr>")
 		end
 	},
 	{
@@ -98,6 +101,19 @@ local plugins = {
 	},
 	{
 		"tpope/vim-fugitive",
+	},
+	{
+		"petertriho/nvim-scrollbar",
+			dependencies = { "lewis6991/gitsigns.nvim" },
+			opts = {
+			handlers = {
+			    gitsigns = true,
+			},
+		},
+		config = function()
+			require("scrollbar").setup()
+			require("scrollbar.handlers.gitsigns").setup()
+		end
 	},
 }
 
