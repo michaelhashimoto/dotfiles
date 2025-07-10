@@ -96,11 +96,10 @@ local plugins = {
 			"mfussenegger/nvim-jdtls", -- required to run jdtls
 		},
 	},
+	{
+		"tpope/vim-fugitive",
+	},
 }
-
--- require('java').setup()
-
--- require("lspconfig").jdtls.setup({})
 
 require("lazy").setup(plugins, opts)
 
