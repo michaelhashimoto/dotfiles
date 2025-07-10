@@ -12,6 +12,12 @@ vim.keymap.set("n", "<leader>y", [["+Y]])
 vim.opt.fixeol = false
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.list = true
+vim.opt.listchars = {
+	tab = ">-",
+	space = "·",
+}
+vim.opt.shiftwidth = 4
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
@@ -58,7 +64,43 @@ local plugins = {
 			})
 		end
 	},
+	{
+		"williamboman/mason.nvim",
+		build = ":MasonUpdate", -- optional: auto-update registry
+		config = function()
+			require("mason").setup()
+		end
+	},
+	{
+		"mfussenegger/nvim-jdtls",
+		dependencies = {
+			"neovim/nvim-lspconfig",
+			"williamboman/mason.nvim",            -- optional helper
+			"williamboman/mason-lspconfig.nvim",  -- optional helper
+		},
+		config = function()
+			require("mason").setup()
+			require("mason-lspconfig").setup({
+				ensure_installed = { "jdtls" },  -- auto install jdtls if not installed
+			})
+		end
+	},
+	{
+		"nvim-java/nvim-java",
+		dependencies = {
+			"nvim-java/lua-async-await",
+			"nvim-java/nvim-java-core",
+			"nvim-java/nvim-java-test",
+			"nvim-java/nvim-java-dap",
+			"nvim-java/nvim-java-refactor",
+			"mfussenegger/nvim-jdtls", -- required to run jdtls
+		},
+	},
 }
+
+-- require('java').setup()
+
+-- require("lspconfig").jdtls.setup({})
 
 require("lazy").setup(plugins, opts)
 
