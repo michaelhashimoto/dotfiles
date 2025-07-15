@@ -1,0 +1,35 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+	"agent": {
+		"inline_assistant_model": {
+			"provider": "ollama",
+			"model": "phi3.5:latest"
+		},
+		"default_model": {
+			"provider": "copilot_chat",
+			"model": "gpt-4o"
+		}
+	},
+	"hard_tabs": true,
+	"ensure_final_newline_on_save": false,
+	"formatter": {
+		"external": {
+			"command": "sed",
+			"arguments": ["-e", "s/ *$//"]
+		}
+	},
+	"ui_font_size": 16,
+	"buffer_font_size": 16,
+	"theme": {
+		"mode": "system",
+		"light": "Catppuccin Latte",
+		"dark": "Catppuccin Macchiato"
+	}
+}
