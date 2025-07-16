@@ -1,7 +1,8 @@
 [
-  {
-    "bindings": {
-      "ctrl-shift-r": "editor::FindAllReferences"
-    }
-  }
+	{
+		"bindings": {
+			"alt-r": "editor::Rename",
+			"cmd-enter": "editor::FindAllReferences"
+		}
+	}
 ]
