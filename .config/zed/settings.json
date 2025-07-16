@@ -25,6 +25,13 @@
 			"arguments": ["-e", "s/ *$//"]
 		}
 	},
+	"preferred_line_length": 80,
+	"lsp": {
+		"jdtls": {
+			"initialization_options": {
+			}
+		}
+	},
 	"ui_font_size": 16,
 	"buffer_font_size": 16,
 	"theme": {

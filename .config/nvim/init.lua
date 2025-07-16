@@ -117,6 +117,17 @@ local plugins = {
 	},
 }
 
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { noremap = true, silent = true })
+vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", { desc = "Go to references" })
+
+vim.keymap.set('n', 'gO', function()
+  require('jdtls').super_implementation()
+end, { desc = "Go to Super Implementation" })
+
+vim.keymap.set('n', 'gi', function()
+  require('jdtls').implementations()
+end, { desc = "Go to Implementations (Overrides)" })
+
 require("lazy").setup(plugins, opts)
 
 require("catppuccin").setup()
@@ -125,7 +136,19 @@ vim.cmd.colorscheme("catppuccin")
 
 local builtin = require("telescope.builtin")
 
+require('telescope').setup({
+  defaults = {
+    file_ignore_patterns = {
+      "%.class$",      -- ignore all `.class` files
+      "%.jar$",        -- (optional) ignore `.jar` files
+      "node_modules",  -- ignore entire `node_modules` directory
+      "%.log$",        -- ignore log files
+    },
+  }
+})
+
 vim.keymap.set("n", "<C-p>", builtin.find_files, {})
+vim.keymap.set("n", "<C-b>", builtin.buffers, {})
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
 
 require("nvim-treesitter.configs").setup({
